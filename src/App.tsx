@@ -8,12 +8,7 @@ import { TodoList } from './components/TodoList';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import { ErrorNotification } from './components/ErrorNotification';
-
-export enum FilterStatus {
-  ALL = 'All',
-  ACTIVE = 'Active',
-  COMPLETED = 'Completed',
-}
+import { FilterStatus } from './types/FilterStatus';
 
 export const App: React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
@@ -55,24 +50,16 @@ export const App: React.FC = () => {
 
       <div className="todoapp__content">
         <Header filteredTodos={filteredTodos} />
-        {/* {todos.length > 0 && (
+        {todos?.length > 0 && (
           <>
             <TodoList filteredTodos={filteredTodos} />
             <Footer
               setFilterStatus={setFilterStatus}
               filterStatus={filterStatus}
               filteredTodos={filteredTodos}
+              todos={todos}
             />
           </>
-        )} */}
-        {todos && <TodoList filteredTodos={filteredTodos} />}
-        {todos.length !== 0 && (
-          <Footer
-            setFilterStatus={setFilterStatus}
-            filterStatus={filterStatus}
-            filteredTodos={filteredTodos}
-            todos={todos}
-          />
         )}
       </div>
       <ErrorNotification error={error} setError={setError} />

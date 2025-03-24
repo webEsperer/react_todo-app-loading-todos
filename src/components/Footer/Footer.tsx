@@ -1,4 +1,4 @@
-import { FilterStatus } from '../../App';
+import { FilterStatus } from '../../types/FilterStatus';
 import { Todo } from '../../types/Todo';
 
 type Props = {
@@ -24,7 +24,6 @@ export const Footer: React.FC<Props> = ({
         {activeTodosCounter} items left
       </span>
 
-      {/* Active link should have the 'selected' class */}
       <nav className="filter" data-cy="Filter">
         {Object.values(FilterStatus).map(value => (
           <a
